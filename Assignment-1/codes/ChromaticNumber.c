@@ -24,7 +24,7 @@ struct Edge
     int source, destination;
 };
  
-// Function to create the graph
+// Function to create the graph in the form of Adjacency List
 struct Graph* createGraph(struct Edge edges[], int n)
 {
 
@@ -35,7 +35,7 @@ struct Graph* createGraph(struct Edge edges[], int n)
         graph->head[i] = NULL;
     }
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) //We add all the edges in this part.
     {
         int source = edges[i].source;
         int destination = edges[i].destination;
@@ -54,20 +54,20 @@ struct Graph* createGraph(struct Edge edges[], int n)
 void calculateChromaticNumber(struct Graph* graph)
 {
     int allot[N];
-    allot[0]  = 0;
+    allot[0]  = 0; // We allot the first color to vertex 0
  
-    for (int i = 1; i < N; i++)
+    for (int i = 1; i < N; i++) //The remaining colors are marked as unassigned
     {
         allot[i] = -1;
     }
     
-    bool check[N];
+    bool check[N];  // False means color is not assigned to an adjacent vertex.
     for (int i = 0; i < N; i++)
     {
         check[i] = false;
     }
 
-    for (int i = 1; i < N; i++)
+    for (int i = 1; i < N; i++) // Start checking from vertex 1.
     {
         struct Node* ptr = graph->head[i];
         while (ptr != NULL)
