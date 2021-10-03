@@ -3,14 +3,14 @@
 
 int main(void) 
 {
-    int B[3][4] = 
+    int B[3][4] =                           // Matrix B
     {
         {1, 1, 0, 0},
         {0,-1, 1, 0},
         {0, 0,-1,-1}
     };
 
-    int Zb[4][4] =
+    int Zb[4][4] =                          // Impedance Matrix
     {
         {2, 0, 0, 0},
         {0, 5, 0, 0},
@@ -18,7 +18,7 @@ int main(void)
         {0, 0, 0,10}
     };
 
-    int vs[4][1] =
+    int vs[4][1] =                          // Voltage Vector
     {
         {10},
         {12},
@@ -26,7 +26,7 @@ int main(void)
         {20}
     };
 
-    int Bt[4][3] = 
+    int Bt[4][3] =                          // B transpose Matrix
     {
         {1, 0, 0},
         {1,-1, 0},
@@ -34,7 +34,7 @@ int main(void)
         {0, 0,-1}
     };
 
-    double a[4][3];
+    double a[4][3];                             // Matrix Multiplication of Zb and B transpose
     for (int i = 0; i < 4; i++) 
     {
         for (int j = 0; j < 3; j++) 
@@ -46,7 +46,7 @@ int main(void)
         }
     }
 
-    double b[3][3];
+    double b[3][3];                                 // Matrix Multiplication of B and previous result
     for (int i = 0; i < 3; i++) 
     {
         for (int j = 0; j < 3; j++) 
@@ -58,27 +58,8 @@ int main(void)
         }
     }
 
-    // printf("%lf",b[0][0]);
-    // printf("%s"," " );
-    // printf("%lf",b[0][1]);
-    // printf("%s"," " );
-    // printf("%lf",b[0][2]);
-    // printf("%s","\n");
-    // printf("%lf",b[1][0]);
-    // printf("%s"," " );
-    // printf("%lf",b[1][1]);
-    // printf("%s"," " );
-    // printf("%lf",b[1][2]);
-    // printf("%s","\n");
-    // printf("%lf",b[2][0]);
-    // printf("%s"," " );
-    // printf("%lf",b[2][1]);
-    // printf("%s"," " );
-    // printf("%lf",b[2][2]);
-    // printf("%s","\n");
-
     double c[3][1];
-    for (int i = 0; i < 3; i++) 
+    for (int i = 0; i < 3; i++)                      // Matrix Multiplication of B and vs    
     {
         for (int j = 0; j < 1; j++) 
         {
@@ -91,7 +72,7 @@ int main(void)
 
 
 
-    double inverseB[3][3];
+    double inverseB[3][3];                          // Inverse Calculation
     double determinantB=0;
 
     for(int i = 0; i < 3; i++)
@@ -104,7 +85,7 @@ int main(void)
     }
 
     
-    double result[3][1];
+    double result[3][1];                           // Matrix Multiplication to calculate the result
     for (int i = 0; i < 3; i++) 
     {
         for (int j = 0; j < 1; j++) 
@@ -115,7 +96,7 @@ int main(void)
             }
         }
     }
-    printf("%s","Current in loop 1 " );
+    printf("%s","Current in loop 1 " );           // Current in each loop
     printf("%lf", result[0][0] );
     printf("%s","\n" ); 
     printf("%s","Current in loop 2 " );
